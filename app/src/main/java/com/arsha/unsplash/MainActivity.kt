@@ -1,22 +1,55 @@
 package com.arsha.unsplash
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONArray
 import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
+    val handler = Handler()
+    var loadedPosts: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        getPosts()
+        handler.post(networkState)
+    }
+
+    private val networkState = object : Runnable {
+        override fun run() {
+            val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+            if (activeNetwork != null) {
+                if(activeNetwork.isConnected!!){
+                    main_connectionError.visibility = View.GONE
+                    if (!loadedPosts){
+                        getPosts()
+                    }
+                }else{
+                    main_connectionError.visibility = View.VISIBLE
+                    main_connectionError.text = getString(R.string.connecting)
+                }
+            }else{
+                main_connectionError.visibility = View.VISIBLE
+                main_connectionError.text = getString(R.string.waiting_for_network)
+            }
+            handler.postDelayed(this, 3000)
+        }
     }
 
     private fun getPosts(){
+        Log.i("debug","called getPosts")
+        loadedPosts = true
         MyConnection("photos?page=1&per_page=50&order_by=latest",header = resources.getString(R.string.client_id),
                 onSuccess = {Response ->
                     Log.i("debug","Response:\n $Response")

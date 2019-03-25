@@ -23,17 +23,29 @@
             android:textSize="18dp" />
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/main_connectionError"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_below="@id/main_header"
+        android:background="@drawable/connectionerror_grad"
+        android:text="@string/connecting"
+        android:gravity="center"
+        android:textSize="13dp"
+        android:textColor="#dcdcdc"
+        android:visibility="gone"/>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="6dp"
         android:src="@drawable/header_shadow"
-        android:layout_below="@id/main_header"/>
+        android:layout_below="@id/main_connectionError"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_rec"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/main_header"/>
+        android:layout_below="@id/main_connectionError"/>
 
 
 </RelativeLayout>
