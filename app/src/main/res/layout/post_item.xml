@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitCenter"
-        android:background="@color/lightGray1"
+        android:background="@color/lightGray"
         app:layout_constraintTop_toBottomOf="@id/post_header"/>
     <ImageView
         android:id="@+id/post_likeIcon"

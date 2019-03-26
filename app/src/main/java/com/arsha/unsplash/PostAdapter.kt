@@ -1,13 +1,18 @@
 package com.arsha.unsplash
+import android.app.Activity
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.post_item.view.*
+import kotlinx.android.synthetic.main.showprofile_dialog.*
 
 /**
  * Created by Arsha on 3/25/2019.
@@ -25,22 +30,57 @@ class PostAdapter(val context: Context,val posts: MutableList<PostDC>): Recycler
     }
 
     class MyHolder(itemView: View,val context: Context): RecyclerView.ViewHolder(itemView) {
-        fun setData(post: PostDC){
+        fun setData(post: PostDC) {
             try {
-
                 Glide.with(context).load(post.avatarUrl).into(itemView.post_userAvatar)
                 itemView.post_username.text = post.fullName
                 Glide.with(context).load(post.imageUrl).into(itemView.post_picture)
                 itemView.post_likeCount.text = "${post.likes} likes"
-                if(post.desc != "null"){
+                if (post.desc != "null") {
                     itemView.post_desc.visibility = View.VISIBLE
                     itemView.post_desc.text = post.desc
-                }else{
+                } else {
                     itemView.post_desc.visibility = View.GONE
                 }
-            }catch (x: Exception){
-                Log.i("error","PostAdapter Error ${x.message}")
+                itemView.post_username.setOnClickListener({
+                    showDialog(post)
+                })
+                itemView.post_userAvatar.setOnClickListener({
+                    showDialog(post)
+                })
+
+            } catch (x: Exception) {
+                Log.i("error", "PostAdapter Error ${x.message}")
             }
+        }
+        fun showDialog(post: PostDC){
+            val spDialog = Dialog(context)
+            spDialog.setContentView(R.layout.showprofile_dialog)
+            spDialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            Glide.with(context).load(post.avatarUrl).thumbnail(0.3f).into(spDialog.spDialog_background)
+            Glide.with(context).load(post.avatarUrl).into(spDialog.spDialog_Avatar)
+            spDialog.spDialog_fullName.text = post.fullName
+
+            if (post.bio != "null"){
+                spDialog.spDialog_bio.text = post.bio
+            }else{
+                spDialog.spDialog_bio.visibility = View.GONE
+                spDialog.spDialog_bioTitle.visibility = View.GONE
+            }
+            if (post.twitter != "null"){
+                spDialog.spDialog_twitterID.text = post.twitter
+            }else{
+                spDialog.spDialog_twitterID.visibility = View.GONE
+                spDialog.spDialog_twitterIcon.visibility = View.GONE
+            }
+            if (post.twitter != "null"){
+                spDialog.spDialog_instagramID.text = post.instagram
+            }else{
+                spDialog.spDialog_instagramID.visibility = View.GONE
+                spDialog.spDialog_instagramIcon.visibility = View.GONE
+            }
+
+            spDialog.show()
         }
     }
 }

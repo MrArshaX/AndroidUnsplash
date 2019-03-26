@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="450dp"
+        android:layout_centerInParent="true">
+
+            <RelativeLayout
+                android:id="@+id/spDialog_header"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/spDialog_background"
+                    android:layout_width="300dp"
+                    android:layout_height="200dp"
+                    app:riv_corner_radius_top_left="8dp"
+                    app:riv_corner_radius_top_right="8dp"
+                    android:scaleType="centerCrop"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/spDialog_Avatar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@color/darkGray"/>
+                <TextView
+                    android:id="@+id/spDialog_fullName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FullName"
+                    android:textSize="10dp"
+                    android:textColor="@color/light"
+                    android:background="@drawable/sp_fullnamebackground"
+                    android:padding="5dp"
+                    android:textAlignment="center"
+                    android:layout_below="@id/spDialog_Avatar"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="13dp"/>
+            </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/spDialog_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spDialog_header"
+            android:layout_above="@id/spDialog_gotoProfile"
+            android:background="@color/light"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/spDialog_bioTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bio"
+                android:textColor="@color/gray"
+                android:textSize="11dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/spDialog_bio"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:maxHeight="200dp"
+                android:text="Bio"
+                android:textColor="@color/darkGray"
+                android:textSize="11dp"
+                android:layout_below="@id/spDialog_bioTitle"/>
+
+            <ImageView
+                android:id="@+id/spDialog_twitterIcon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_twitter"
+                android:layout_below="@id/spDialog_bio"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/spDialog_twitterID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="twitterID"
+                android:textColor="@color/darkGray"
+                android:textSize="12dp"
+                android:gravity="center"
+                android:layout_toRightOf="@id/spDialog_twitterIcon"
+                android:layout_alignTop="@id/spDialog_twitterIcon"
+                android:layout_alignBottom="@id/spDialog_twitterIcon"
+                android:layout_marginLeft="8dp"/>
+
+            <ImageView
+                android:id="@+id/spDialog_instagramIcon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_instagram"
+                android:layout_below="@id/spDialog_twitterIcon"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/spDialog_instagramID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="instagramID"
+                android:textColor="@color/darkGray"
+                android:textSize="12dp"
+                android:gravity="center"
+                android:layout_toRightOf="@id/spDialog_instagramIcon"
+                android:layout_alignTop="@id/spDialog_instagramIcon"
+                android:layout_alignBottom="@id/spDialog_instagramIcon"
+                android:layout_marginLeft="8dp" />
+
+        </RelativeLayout>
+        <Button
+            android:id="@+id/spDialog_gotoProfile"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:text="Show Profile"
+            android:textAlignment="center"
+            android:textSize="13dp"
+            android:textAllCaps="true"
+            android:textColor="@color/lightBlue"
+            android:background="@drawable/gotoprofile_background"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

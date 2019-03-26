@@ -4,13 +4,17 @@
 
     <color name="colorPrimaryDark">#202020</color>
 
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ce052d</color>
 
     <color name="darkGray">#3B3B3B</color>
 
-    <color name="lightGray2">#5E5E5E</color>
+    <color name="gray">#5E5E5E</color>
 
-    <color name="lightGray1">#e6e6e6</color>
+    <color name="grayTRNS">#d43b3b3b</color>
+
+    <color name="lightGray">#e6e6e6</color>
 
     <color name="light">#ffffff</color>
+
+    <color name="lightBlue">#168bde</color>
 </resources>

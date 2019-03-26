@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
     private fun parsePost(json: JSONArray){
         val posts: MutableList<PostDC> = ArrayList()
         var avatarUrl: String ; var imageUrl: String ; var desc: String ; var likes: String ; var fullName: String
+        var twitter: String; var instagram: String; var bio: String
         var avatarObject: JSONObject ; var mainObject: JSONObject; var urlObject: JSONObject; var userObject: JSONObject
         for (obj in 0 until json.length()){
             // get Image url
@@ -82,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             // get avatar
             userObject = mainObject.getJSONObject("user")
             avatarObject = userObject.getJSONObject("profile_image")
-            avatarUrl = avatarObject.getString("medium")
+            avatarUrl = avatarObject.getString("large")
             //----
 
             // get fullName
@@ -90,7 +91,13 @@ class MainActivity : AppCompatActivity() {
             fullName = userObject.getString("name")
             //
 
-            posts.add(PostDC(avatarUrl,fullName, imageUrl, likes, desc))
+            // get info
+            twitter = userObject.getString("twitter_username")
+            instagram = userObject.getString("instagram_username")
+            bio = userObject.getString("bio")
+            //
+
+            posts.add(PostDC(avatarUrl,fullName, imageUrl, likes, desc, twitter, instagram, bio))
             initPostRecycler(posts)
         }
     }
@@ -98,7 +105,7 @@ class MainActivity : AppCompatActivity() {
     private fun initPostRecycler(list: MutableList<PostDC>){
         val llm = LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false)
         main_rec.layoutManager = llm
-        main_rec.adapter = PostAdapter(applicationContext, list)
+        main_rec.adapter = PostAdapter(this, list)
     }
 
 }

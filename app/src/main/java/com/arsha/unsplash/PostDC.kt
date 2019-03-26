@@ -7,5 +7,8 @@ data class PostDC(
         val fullName: String,
         val imageUrl: String,
         val likes: String,
-        val desc: String
+        val desc: String,
+        val twitter: String,
+        val instagram: String,
+        val bio: String
 )
