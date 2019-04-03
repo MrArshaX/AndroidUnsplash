@@ -73,7 +73,8 @@
             <TextView
                 android:id="@+id/spDialog_bio"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
+                android:maxWidth="70dp"
                 android:maxHeight="200dp"
                 android:text="Bio"
                 android:textColor="@color/darkGray"

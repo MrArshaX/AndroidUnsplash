@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.arsha.unsplash.ProfileActivity"
+    android:animateLayoutChanges="true">
+
+    <TextView
+        android:id="@+id/prof_connectionError"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_below="@id/main_header"
+        android:background="@drawable/connectionerror_grad"
+        android:text="@string/connecting"
+        android:gravity="center"
+        android:textSize="13dp"
+        android:textColor="#dcdcdc"
+        android:visibility="gone"/>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/prof_connectionError">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:expandedTitleTextAppearance="@android:color/transparent"
+                app:layout_scrollFlags="exitUntilCollapsed|scroll"
+                android:fitsSystemWindows="true"
+                android:background="@color/light">
+
+                <!--
+                <android.support.v7.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/Base.ThemeOverlay.AppCompat.Light"/>
+                -->
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/prof_back"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ic_arrow_back"
+                        android:padding="2dp"/>
+                    <TextView
+                        android:id="@+id/prof_userName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/prof_back"
+                        app:layout_constraintBottom_toBottomOf="@id/prof_back"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:textColor="@color/darkGray"
+                        android:textSize="15dp"/>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/prof_avatar"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="10dp"
+                        app:civ_border_color="@color/darkGray"
+                        app:civ_border_width="2dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/prof_userName"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:id="@+id/prof_followersTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Followers"
+                        android:textColor="@color/darkGray"
+                        android:textSize="14dp"
+                        app:layout_constraintLeft_toRightOf="@id/prof_avatar"
+                        app:layout_constraintTop_toTopOf="@id/prof_avatar" />
+
+                    <TextView
+                        android:id="@+id/prof_followingTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Following"
+                        android:textColor="@color/darkGray"
+                        android:textSize="14dp"
+                        app:layout_constraintLeft_toRightOf="@id/prof_followersTitle"
+                        app:layout_constraintTop_toTopOf="@id/prof_avatar" />
+
+                    <TextView
+                        android:id="@+id/prof_followersCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="@+id/prof_followersTitle"
+                        app:layout_constraintLeft_toLeftOf="@id/prof_followersTitle"
+                        app:layout_constraintRight_toRightOf="@id/prof_followersTitle"
+                        app:layout_constraintStart_toStartOf="@+id/prof_followersTitle"
+                        app:layout_constraintTop_toBottomOf="@id/prof_followersTitle"
+                        android:layout_marginTop="10dp"
+                        android:text="0"
+                        android:textColor="@color/darkGray"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/prof_followingCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="@+id/prof_followingTitle"
+                        app:layout_constraintLeft_toLeftOf="@id/prof_followingTitle"
+                        app:layout_constraintRight_toRightOf="@id/prof_followingTitle"
+                        app:layout_constraintStart_toStartOf="@+id/prof_followingTitle"
+                        app:layout_constraintTop_toBottomOf="@id/prof_followingTitle"
+                        android:layout_marginTop="10dp"
+                        android:text="0"
+                        android:textColor="@color/darkGray"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:id="@+id/prof_fullName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/gray"
+                        android:textSize="11dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/prof_avatar"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:id="@+id/prof_bio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/prof_fullName"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/darkGray"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/prof_webUrl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        app:layout_constraintTop_toBottomOf="@id/prof_bio"
+                        android:layout_marginTop="5dp"
+                        android:textSize="13dp"
+                        android:textColor="@color/lightBlue"/>
+
+                    <ImageView
+                        android:id="@+id/prof_showMoreDetails"
+                        android:layout_width="30dp"
+                        android:layout_height="25dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/prof_webUrl"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/ic_arrow_drop_down"/>
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/prof_showMoreDetailsLay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/prof_showMoreDetails"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:visibility="gone">
+
+                   <ImageView
+                       android:id="@+id/prof_twitterIcon"
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       app:layout_constraintLeft_toLeftOf="parent"
+                       app:layout_constraintTop_toTopOf="parent"
+                       android:layout_marginLeft="10dp"
+                       android:layout_marginTop="10dp"
+                       android:src="@drawable/ic_twitter"
+                       android:padding="1dp"/>
+
+                   <TextView
+                       android:id="@+id/prof_twitterId"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:layout_constraintLeft_toRightOf="@id/prof_twitterIcon"
+                       app:layout_constraintTop_toTopOf="@id/prof_twitterIcon"
+                       app:layout_constraintBottom_toBottomOf="@id/prof_twitterIcon"
+                       android:layout_marginLeft="5dp"
+                       android:textColor="@color/gray"
+                       android:textSize="13dp"
+                       android:gravity="center"/>
+
+                        <ImageView
+                            android:id="@+id/prof_instagramIcon"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:padding="1dp"
+                            android:src="@drawable/ic_instagram"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/prof_twitterIcon"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"/>
+
+                   <TextView
+                       android:id="@+id/prof_instagramId"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:layout_constraintLeft_toRightOf="@id/prof_instagramIcon"
+                       app:layout_constraintTop_toTopOf="@id/prof_instagramIcon"
+                       app:layout_constraintBottom_toBottomOf="@id/prof_instagramIcon"
+                       android:layout_marginLeft="5dp"
+                       android:textColor="@color/gray"
+                       android:textSize="13dp"
+                       android:gravity="center"/>
+
+                   <ImageView
+                       android:id="@+id/prof_locationIcon"
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       app:layout_constraintLeft_toLeftOf="parent"
+                       app:layout_constraintTop_toBottomOf="@id/prof_instagramIcon"
+                       android:layout_marginLeft="10dp"
+                       android:layout_marginTop="10dp"
+                       android:src="@drawable/ic_public"/>
+
+                   <TextView
+                       android:id="@+id/prof_location"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:layout_constraintLeft_toRightOf="@id/prof_locationIcon"
+                       app:layout_constraintTop_toTopOf="@id/prof_locationIcon"
+                       app:layout_constraintBottom_toBottomOf="@id/prof_locationIcon"
+                       android:layout_marginLeft="5dp"
+                       android:textColor="@color/gray"
+                       android:textSize="13dp"
+                       android:gravity="center"/>
+                    </android.support.constraint.ConstraintLayout>
+
+                </android.support.constraint.ConstraintLayout>
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+       <android.support.v4.widget.NestedScrollView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           app:layout_behavior="@string/appbar_scrolling_view_behavior"
+           android:fillViewport="true">
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+              <android.support.design.widget.TabLayout
+                  android:id="@+id/prof_tabs"
+                  android:layout_width="match_parent"
+                  android:layout_height="50dp"
+                  app:tabSelectedTextColor="@color/darkGray"
+                  app:tabIndicatorColor="@color/darkGray"
+                  app:tabIndicatorHeight="1dp"/>
+              <android.support.v4.view.ViewPager
+                  android:id="@+id/prof_pager"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_below="@id/prof_tabs"/>
+          </RelativeLayout>
+       </android.support.v4.widget.NestedScrollView>
+    </android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

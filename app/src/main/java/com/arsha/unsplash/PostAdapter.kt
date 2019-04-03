@@ -1,8 +1,7 @@
 package com.arsha.unsplash
-import android.app.Activity
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.support.v7.widget.RecyclerView
@@ -57,9 +56,15 @@ class PostAdapter(val context: Context,val posts: MutableList<PostDC>): Recycler
             val spDialog = Dialog(context)
             spDialog.setContentView(R.layout.showprofile_dialog)
             spDialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            Glide.with(context).load(post.avatarUrl).thumbnail(0.3f).into(spDialog.spDialog_background)
+            Glide.with(context).load(post.avatarUrl).thumbnail(1f).into(spDialog.spDialog_background)
             Glide.with(context).load(post.avatarUrl).into(spDialog.spDialog_Avatar)
             spDialog.spDialog_fullName.text = post.fullName
+            spDialog.spDialog_gotoProfile.setOnClickListener({
+                context.startActivity(Intent(context,ProfileActivity::class.java).putExtra("userName",post.userName))
+                //context.startActivity(Intent(context, TestActivity::class.java))
+                spDialog.dismiss()
+            })
+
 
             if (post.bio != "null"){
                 spDialog.spDialog_bio.text = post.bio
@@ -73,7 +78,7 @@ class PostAdapter(val context: Context,val posts: MutableList<PostDC>): Recycler
                 spDialog.spDialog_twitterID.visibility = View.GONE
                 spDialog.spDialog_twitterIcon.visibility = View.GONE
             }
-            if (post.twitter != "null"){
+            if (post.instagram != "null"){
                 spDialog.spDialog_instagramID.text = post.instagram
             }else{
                 spDialog.spDialog_instagramID.visibility = View.GONE

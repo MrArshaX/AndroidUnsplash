@@ -10,5 +10,6 @@ data class PostDC(
         val desc: String,
         val twitter: String,
         val instagram: String,
-        val bio: String
+        val bio: String,
+        val userName: String
 )

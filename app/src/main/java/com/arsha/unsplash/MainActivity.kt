@@ -1,6 +1,5 @@
 package com.arsha.unsplash
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
@@ -50,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     private fun getPosts(){
         Log.i("debug","called getPosts")
         loadedPosts = true
-        MyConnection("photos?page=1&per_page=50&order_by=latest",header = resources.getString(R.string.client_id),
+        getJSONArray("photos?page=1&per_page=50&order_by=latest",header = resources.getString(R.string.client_id),
                 onSuccess = {Response ->
                     Log.i("debug","Response:\n $Response")
                     parsePost(Response)
@@ -62,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun parsePost(json: JSONArray){
         val posts: MutableList<PostDC> = ArrayList()
-        var avatarUrl: String ; var imageUrl: String ; var desc: String ; var likes: String ; var fullName: String
+        var avatarUrl: String ; var imageUrl: String ; var desc: String ; var likes: String ; var fullName: String ; var userName: String
         var twitter: String; var instagram: String; var bio: String
         var avatarObject: JSONObject ; var mainObject: JSONObject; var urlObject: JSONObject; var userObject: JSONObject
         for (obj in 0 until json.length()){
@@ -97,7 +96,11 @@ class MainActivity : AppCompatActivity() {
             bio = userObject.getString("bio")
             //
 
-            posts.add(PostDC(avatarUrl,fullName, imageUrl, likes, desc, twitter, instagram, bio))
+            // get userName
+            userName = userObject.getString("username")
+            //
+
+            posts.add(PostDC(avatarUrl,fullName, imageUrl, likes, desc, twitter, instagram, bio, userName))
             initPostRecycler(posts)
         }
     }
