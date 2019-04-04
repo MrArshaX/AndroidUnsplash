@@ -10,12 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.arsha.unsplash.R
-import com.arsha.unsplash.getJSONArray
+import com.arsha.unsplash.Utils.getJSONArray
 import kotlinx.android.synthetic.main.fragment_recyclergrid.*
 import org.json.JSONArray
 import org.json.JSONObject
 import android.widget.GridLayout.VERTICAL
-import com.arsha.unsplash.RecyclerGridAdapter
+import com.arsha.unsplash.Utils.Adapter.RecyclerGridAdapter
 
 
 /**
@@ -47,12 +47,12 @@ class RecyclerGridFragment : Fragment() {
     }
 
     private fun getPhotos(){
-        getJSONArray("users/${arguments!!.getString("uName")}/photos",resources.getString(R.string.client_id),
-                onSuccess = {Response ->
+        getJSONArray("users/${arguments!!.getString("uName")}/photos", resources.getString(R.string.client_id),
+                onSuccess = { Response ->
                     parsePhotos(Response)
                 },
-                onFailed = {ErrorMessage ->
-                    Log.i("error","getPhotos Error ->\n$ErrorMessage")
+                onFailed = { ErrorMessage ->
+                    Log.i("error", "getPhotos Error ->\n$ErrorMessage")
                 })
     }
 
@@ -69,7 +69,7 @@ class RecyclerGridFragment : Fragment() {
 
     private fun initRecycler(links: MutableList<String>){
         prof_recyclerGrid.layoutManager = GridLayoutManager(context,3, VERTICAL, false)
-        prof_recyclerGrid.adapter = RecyclerGridAdapter(context,links)
+        prof_recyclerGrid.adapter = RecyclerGridAdapter(context, links)
     }
 
 
