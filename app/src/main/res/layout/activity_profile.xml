@@ -91,7 +91,8 @@
                         android:textColor="@color/darkGray"
                         android:textSize="14dp"
                         app:layout_constraintLeft_toRightOf="@id/prof_avatar"
-                        app:layout_constraintTop_toTopOf="@id/prof_avatar" />
+                        app:layout_constraintTop_toTopOf="@id/prof_avatar"
+                        android:onClick="gotoFollowActivity"/>
 
                     <TextView
                         android:id="@+id/prof_followingTitle"
@@ -103,7 +104,8 @@
                         android:textColor="@color/darkGray"
                         android:textSize="14dp"
                         app:layout_constraintLeft_toRightOf="@id/prof_followersTitle"
-                        app:layout_constraintTop_toTopOf="@id/prof_avatar" />
+                        app:layout_constraintTop_toTopOf="@id/prof_avatar"
+                        android:onClick="gotoFollowActivity"/>
 
                     <TextView
                         android:id="@+id/prof_followersCount"
@@ -117,7 +119,8 @@
                         android:layout_marginTop="10dp"
                         android:text="0"
                         android:textColor="@color/darkGray"
-                        android:textSize="14dp" />
+                        android:textSize="14dp"
+                        android:onClick="gotoFollowActivity"/>
 
                     <TextView
                         android:id="@+id/prof_followingCount"
@@ -131,7 +134,8 @@
                         android:layout_marginTop="10dp"
                         android:text="0"
                         android:textColor="@color/darkGray"
-                        android:textSize="14dp"/>
+                        android:textSize="14dp"
+                        android:onClick="gotoFollowActivity"/>
 
                     <TextView
                         android:id="@+id/prof_fullName"

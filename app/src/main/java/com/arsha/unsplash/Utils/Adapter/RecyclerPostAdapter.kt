@@ -19,11 +19,12 @@ import kotlinx.android.synthetic.main.showprofile_dialog.*
 /**
  * Created by Arsha on 3/25/2019.
  */
+
 enum class PostMode{
     NORMAL,PROFILE
 }
 
-class PostAdapter(val context: Context?,val posts: MutableList<PostDC>, val mode: PostMode): RecyclerView.Adapter<PostAdapter.MyHolder>() {
+class RecyclerPostAdapter(val context: Context?, private val posts: MutableList<PostDC>, val mode: PostMode): RecyclerView.Adapter<RecyclerPostAdapter.MyHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         return MyHolder(LayoutInflater.from(context).inflate(R.layout.post_item, parent, false), context)
@@ -44,7 +45,7 @@ class PostAdapter(val context: Context?,val posts: MutableList<PostDC>, val mode
                 }
 
             } catch (x: Exception) {
-                Log.i("error", "PostAdapter Error ${x.message}")
+                Log.i("error", "RecyclerPostAdapter Error ${x.message}")
             }
         }
 
@@ -122,4 +123,5 @@ class PostAdapter(val context: Context?,val posts: MutableList<PostDC>, val mode
             spDialog.show()
         }
     }
+
 }

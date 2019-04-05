@@ -10,8 +10,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import com.arsha.unsplash.R
-import com.arsha.unsplash.Utils.Adapter.PostAdapter
 import com.arsha.unsplash.Utils.Adapter.PostMode
+import com.arsha.unsplash.Utils.Adapter.RecyclerPostAdapter
 import com.arsha.unsplash.Utils.DataClasses.PostDC
 import com.arsha.unsplash.Utils.getJSONArray
 import kotlinx.android.synthetic.main.activity_main.*
@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
     private fun initPostRecycler(list: MutableList<PostDC>){
         val llm = LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false)
         main_rec.layoutManager = llm
-        main_rec.adapter = PostAdapter(this, list, PostMode.NORMAL)
+        main_rec.adapter = RecyclerPostAdapter(this, list, PostMode.NORMAL)
     }
 
 }

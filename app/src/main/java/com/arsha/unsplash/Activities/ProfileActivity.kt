@@ -1,5 +1,6 @@
 package com.arsha.unsplash.Activities
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -116,6 +117,13 @@ class ProfileActivity : AppCompatActivity() {
         prof_tabs.getTabAt(1)!!.setIcon(R.drawable.ic_crop_original_gray)
     }
 
-
+    fun gotoFollowActivity(v: View){
+        when(v.id){
+            R.id.prof_followersCount,R.id.prof_followersTitle -> startActivity(Intent(this,FollowActivity::class.java)
+                    .putExtra("mode","followers").putExtra("uName",intent.getStringExtra("userName")))
+            R.id.prof_followingCount,R.id.prof_followingTitle -> startActivity(Intent(this,FollowActivity::class.java)
+                    .putExtra("mode","following").putExtra("uName",intent.getStringExtra("userName")))
+        }
+    }
 
 }

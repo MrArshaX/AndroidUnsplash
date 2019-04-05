@@ -3,21 +3,16 @@ package com.arsha.unsplash.Fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-
 import com.arsha.unsplash.R
-import com.arsha.unsplash.Utils.Adapter.PostAdapter
+import com.arsha.unsplash.Utils.Adapter.RecyclerPostAdapter
 import com.arsha.unsplash.Utils.Adapter.PostMode
-import com.arsha.unsplash.Utils.Adapter.RecyclerGridAdapter
 import com.arsha.unsplash.Utils.DataClasses.PostDC
 import com.arsha.unsplash.Utils.getJSONArray
-import kotlinx.android.synthetic.main.fragment_recyclergrid.*
 import kotlinx.android.synthetic.main.fragment_recyclerview.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -73,7 +68,7 @@ class RecyclerviewFragment : Fragment() {
 
     private fun initRecycler(posts: MutableList<PostDC>){
         prof_recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        prof_recyclerView.adapter = PostAdapter(context, posts, PostMode.PROFILE)
+        prof_recyclerView.adapter = RecyclerPostAdapter(context, posts, PostMode.PROFILE)
     }
 
 }// Required empty public constructor
