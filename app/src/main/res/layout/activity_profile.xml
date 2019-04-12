@@ -85,7 +85,7 @@
                         android:id="@+id/prof_followersTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="40dp"
                         android:layout_marginTop="10dp"
                         android:text="Followers"
                         android:textColor="@color/darkGray"
@@ -98,14 +98,16 @@
                         android:id="@+id/prof_followingTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="50dp"
                         android:layout_marginLeft="40dp"
                         android:layout_marginTop="10dp"
+                        android:onClick="gotoFollowActivity"
                         android:text="Following"
                         android:textColor="@color/darkGray"
                         android:textSize="14dp"
+                        app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintLeft_toRightOf="@id/prof_followersTitle"
-                        app:layout_constraintTop_toTopOf="@id/prof_avatar"
-                        android:onClick="gotoFollowActivity"/>
+                        app:layout_constraintTop_toTopOf="@id/prof_avatar" />
 
                     <TextView
                         android:id="@+id/prof_followersCount"

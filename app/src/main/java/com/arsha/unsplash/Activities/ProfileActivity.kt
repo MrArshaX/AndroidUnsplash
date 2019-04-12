@@ -101,6 +101,10 @@ class ProfileActivity : AppCompatActivity() {
                 prof_webUrl.visibility = View.GONE
             }
 
+            if(obj.getString("twitter_username") == "null" && obj.getString("location") == "null" && obj.getString("instagram_username") == "null"){
+                prof_showMoreDetails.visibility = View.GONE
+            }
+
         }catch (x: Exception){
             Log.i("error","parse Data Error ->\n${x.message}")
         }
